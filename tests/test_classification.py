@@ -1,7 +1,4 @@
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
-from classification import classify_inquiry
+from src.classification import classify_inquiry
 
 # Testing dataset for classifying queries
 test_data = [
