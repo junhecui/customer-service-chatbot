@@ -50,5 +50,3 @@ def list_upcoming_events(max_results=10):
                                           orderBy='startTime').execute()
     events = events_result.get('items', [])
     return events
-
-get_calendar_service()
