@@ -41,4 +41,13 @@ def list_tasks():
             if 'due' in task:
                 print(f"Due: {task['due']}")
 
-get_tasks_service()
+def add_task(title, due=None, notes=None):
+    service = get_tasks_service()
+    task = {
+        'title': title,
+        'due': due,
+        'notes': notes
+    }
+    
+    result = service.tasks().insert(tasklist='@default', body=task).execute()
+    print(f"Task '{title}' added with ID: {result['id']}")

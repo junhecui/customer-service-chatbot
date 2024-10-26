@@ -11,15 +11,13 @@ from langchain_openai import OpenAI
 from langchain import ConversationChain, LLMChain, PromptTemplate
 from langchain.memory import ConversationBufferMemory
 from classification import classify_inquiry
-from integrations.google_calendar import create_event, list_upcoming_events
 from datetime import datetime
 import dateparser
 from tasks.create_event_task import create_event_task
 from tasks.send_email_task import send_email_task
 from tasks.list_events_task import list_events_with_count
 from tasks.answer_company_questions import retrieve_company_info
-
-
+from tasks.create_todo_task import create_todo_task
 
 agent = OpenAI()
 
@@ -63,6 +61,8 @@ while True:
         response = send_email_task(query)
     elif category == "Company Information":
         response = retrieve_company_info(query)
+    elif category == "Add Task":
+        response = create_todo_task(query)
     else:
         response = conversation.predict(input=query)
     print(f"Chatbot: {response}")

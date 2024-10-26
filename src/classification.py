@@ -16,6 +16,7 @@ Classify the following user input into one of the following categories:
 - Reminders: when the user wants to be reminded of something.
 - Send Email: when the user wants to send a message or communicate with someone by sending an email to them.
 - Location Recommendations: when the user asks for recommendations for locations nearby such as restaurants or malls.
+- Add Task: when the user wants to add a task to their to-do list.
 
 Examples:
 - "Can you schedule a meeting with Ted tomorrow at 4 PM?" -> Create Event
@@ -24,6 +25,7 @@ Examples:
 - "Book a team meeting for next Friday." -> Create Event
 - "Can you send a message to Ted?" -> Send Email
 - "Can you tell me the company cancellation policy?" -> Company Information
+- "Put 'take out the trash' on my to-do list." -> Add Task
 
 User input: "{query}"
 Category:
