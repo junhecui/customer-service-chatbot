@@ -19,6 +19,7 @@ from tasks.list_events_task import list_events_with_count
 from tasks.answer_company_questions import retrieve_company_info
 from tasks.create_todo_task import create_todo_task
 from tasks.list_todo_task import list_todo_task
+from tasks.google_search_task import google_search_task
 
 agent = OpenAI()
 
@@ -66,6 +67,8 @@ while True:
         response = create_todo_task(query)
     elif category == "List Tasks":
         response = list_todo_task(query)
+    elif category == "Google Search":
+        response = google_search_task(query)
     else:
         response = conversation.predict(input=query)
     print(f"Chatbot: {response}")

@@ -18,6 +18,7 @@ Classify the following user input into one of the following categories:
 - Location Recommendations: when the user asks for recommendations for locations nearby such as restaurants or malls.
 - List Tasks: when the user wants to see their to-do list, or see their upcoming tasks.
 - Add Task: when the user wants to add a task to their to-do list.
+- Google Search: when the user wants to search for information on the internet.
 
 Examples:
 - "Can you schedule a meeting with Ted tomorrow at 4 PM?" -> Create Event
