@@ -36,7 +36,6 @@ def create_event_task(query):
     today_date = datetime.now().strftime("%Y-%m-%d")
     response = event_information_chain.predict(query=query, today_date=today_date).strip()
 
-    # Check if LLM has returned all required information to create the event
     if response.startswith("Create event:"):
         _, details = response.split("Create event:", 1)
         summary, start_time, end_time = [detail.strip() for detail in details.split(",")]

@@ -10,13 +10,12 @@ classification_prompt = PromptTemplate(
     input_variables=["query"],
     template="""
 Classify the following user input into one of the following categories: 
+- Company Information: when the user wants information related to the company, such as services, policies, basic plan, standard plan, and premium plans, support hours, payment methods, or FAQs.
 - Create Event: when the user wants to schedule a meeting, appointment, or any event on the calendar.
 - List Events: when the user wants to see a list of upcoming events.
 - Reminders: when the user wants to be reminded of something.
 - Send Email: when the user wants to send a message or communicate with someone by sending an email to them.
-- Recommendations: when the user asks for suggestions or recommendations.
-- Company Information: when the user wants information related to the company, such as services, policies, internet plans, support hours, payment methods, or FAQs.
-- General Assistance: for other types of help.
+- Location Recommendations: when the user asks for recommendations for locations nearby such as restaurants or malls.
 
 Examples:
 - "Can you schedule a meeting with Ted tomorrow at 4 PM?" -> Create Event

@@ -16,7 +16,7 @@ plans:
     features:
       - "No data cap"
       - "Free modem rental"
-  - name: "Pro Plan"
+  - name: "Standard Plan"
     speed: "100 Mbps"
     price: "$59.99/month"
     suitable for: HD streaming, gaming, remote work

@@ -2,19 +2,15 @@ import yaml
 from langchain_openai import OpenAI
 from langchain import LLMChain, PromptTemplate
 
-# Initialize LLM
 llm = OpenAI()
 
-# Load YAML data and format as string
 def load_and_format_yaml(file_path):
     with open(file_path, 'r') as file:
         data = yaml.safe_load(file)
-    return yaml.dump(data)  # Convert YAML content to a string format for context
+    return yaml.dump(data)
 
-# Load company data
 company_data_string = load_and_format_yaml("src/company_data.yaml")
 
-# Define LLM prompt template
 company_info_prompt = PromptTemplate(
     input_variables=["user_query", "company_data"],
     template="""
@@ -23,7 +19,9 @@ Company Data:
 
 User Query: "{user_query}"
 
-Based on the company data provided, find the most relevant information for the user's query. If the query does not match any available data, respond with "No specific company data found."
+Based on the company data provided, find the most relevant information for the user's query. If the query does not match any available data, respond with "I am transferring you to our 24/7 customer support. Please hold."
+
+Do not write quotations in your answer.
 
 Examples:
 User Query: "What are your operating hours?"
@@ -38,8 +36,6 @@ Response:
 
 company_info_chain = LLMChain(llm=llm, prompt=company_info_prompt)
 
-# Function to respond to user queries
 def retrieve_company_info(user_query):
-    # Use LLM to find the best match based on YAML content and user query
     response = company_info_chain.predict(user_query=user_query, company_data=company_data_string).strip()
     return response

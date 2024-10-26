@@ -12,7 +12,7 @@ from langchain import ConversationChain, LLMChain, PromptTemplate
 from langchain.memory import ConversationBufferMemory
 from classification import classify_inquiry
 from integrations.google_calendar import create_event, list_upcoming_events
-from datetime import datetime, timedelta
+from datetime import datetime
 import dateparser
 from tasks.create_event_task import create_event_task
 from tasks.send_email_task import send_email_task
@@ -23,7 +23,6 @@ from tasks.answer_company_questions import retrieve_company_info
 
 agent = OpenAI()
 
-# Memory setup with today's date context
 memory = ConversationBufferMemory()
 today_date = datetime.now().strftime("%Y-%m-%d")
 weekday = datetime.now().strftime("%A")
