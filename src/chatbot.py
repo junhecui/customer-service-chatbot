@@ -22,6 +22,7 @@ from tasks.list_todo_task import list_todo_task
 from tasks.google_search_task import google_search_task
 from tasks.news_update_task import news_update_task
 from tasks.recommend_place_task import recommend_place_task
+from tasks.get_weather_task import get_weather_task
 
 agent = OpenAI()
 
@@ -75,6 +76,8 @@ while True:
         response = google_search_task(query)
     elif category == "Location Recommendations":
         response = recommend_place_task(query)
+    elif category == "Weather Update":
+        response = get_weather_task(query)
     else:
         response = conversation.predict(input=query)
     print(f"Chatbot: {response}")

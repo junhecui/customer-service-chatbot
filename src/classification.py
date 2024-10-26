@@ -19,6 +19,7 @@ Classify the following user input into one of the following categories:
 - List Tasks: when the user wants to see their to-do list, or see their upcoming tasks.
 - Add Task: when the user wants to add a task to their to-do list.
 - News Update: when the user wants the latest news.
+- Weather Update: when the user wants to know the weather.
 - Google Search: when the user wants to search for information on the internet.
 
 Examples:
@@ -30,6 +31,7 @@ Examples:
 - "Can you tell me the company cancellation policy?" -> Company Information
 - "Put 'take out the trash' on my to-do list." -> Add Task
 - "What is the latest news on AI?" -> News Update
+- "What is the current weather in Vancouver? -> Weather Update
 
 User input: "{query}"
 Category:
