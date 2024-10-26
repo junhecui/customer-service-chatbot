@@ -27,6 +27,8 @@ Prioritize recent results, with heavy priority on stories that came out today.
 Results: "{results}"
 Query: "{query}"
 
+If no news results are found, politely inform the user.
+
 Response:
 """
 )

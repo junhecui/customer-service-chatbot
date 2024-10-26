@@ -20,7 +20,7 @@ google_search_chain = LLMChain(llm=llm, prompt=google_search_prompt)
 google_search_results_prompt = PromptTemplate(
     input_variables=["query", "results"],
     template="""
-Based on the google search results, return the result that closest answers the query, summarize it and post the summary followed by the link of the result.
+Based on the google search results, return the result that closest answers the query, summarize it in natural language to someone who has no knowledge of the topic.
 Results: "{results}"
 Query: "{query}"
 
