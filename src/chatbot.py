@@ -52,7 +52,7 @@ while True:
     query = input("You: ")
 
     category = classify_inquiry(query)
-    print("Debug: " + category)
+    # print("Debug: " + category)
 
     if end_chat_chain.predict(query=query).strip().lower() == 'yes':
         print("Chatbot: Goodbye!")

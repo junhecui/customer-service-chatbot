@@ -17,9 +17,3 @@ def get_weather_forecast(latitude, longitude, days=7):
         return weather_data
     except requests.exceptions.RequestException as e:
         return f"An error occurred: {e}"
-
-latitude = 49.2827 
-longitude = -123.1207
-
-forecast = get_weather_forecast(latitude, longitude)
-print(forecast)

@@ -53,10 +53,26 @@ troubleshooting_steps:
     - "Ensure all cables are securely connected."
     - "Restart your modem and router by unplugging for 30 seconds."
     - "Check for service outages in your area on our website."
-    - "If the issue persists, contact customer support."
+  slow_internet:
+    - "Perform a speed test using our website or an external tool."
+    - "Ensure no background applications or other devices are consuming large amounts of bandwidth."
+    - "Restart your modem and router by unplugging for 30 seconds."
+    - "Disconnect unused devices from the network to free up bandwidth."
+  frequent_connection_drops:
+    - "Check for any loose cables or damaged connectors on the modem or router."
+    - "Ensure your modem and router firmware is up-to-date."
+    - "Try repositioning your router to reduce interference from walls or other electronics."
+    - "Consider upgrading to a higher-speed plan if multiple devices are connected frequently."
+  wifi_not_connecting:
+    - "Ensure the Wi-Fi on your device is turned on."
+    - "Verify that your device is in range of the Wi-Fi network."
+    - "Forget the Wi-Fi network on your device, then reconnect using the correct password."
+    - "Check if other devices can connect to the Wi-Fi; if they can, restart your device."
 
 common_questions:
   - question: "How do I upgrade my internet plan?"
     answer: "To upgrade your plan, please visit your account page on our website or call customer support."
   - question: "What should I do if I forget my account password?"
     answer: "Click on 'Forgot Password' on the login page to reset your password. An email will be sent to your registered email address."
+  - question: "How do I get a refund if I cancel early?"
+    answer: "We offer prorated funds for customers who cancel before the end of their billing cycle. Please contact billing@noname.com for more information."
