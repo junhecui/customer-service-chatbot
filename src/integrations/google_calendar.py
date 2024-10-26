@@ -42,7 +42,7 @@ def create_event(summary, start_time, end_time, description=None, location=None)
     print('Event created:', event.get('htmlLink'))
     return event
 
-def list_upcoming_events(max_results=10):
+def list_upcoming_events(max_results=100):
     service = get_calendar_service()
     now = datetime.utcnow().isoformat() + 'Z'
     events_result = service.events().list(calendarId='primary', timeMin=now,

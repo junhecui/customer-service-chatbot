@@ -45,9 +45,3 @@ def send_email(to, subject, message_text):
         print("Email sent successfully. Message ID:", sent_message['id'])
     except Exception as e:
         print("An error occurred:", e)
-
-if __name__ == "__main__":
-    to = "cjunhe05@gmail.com"
-    subject = "Test Email from Gmail API"
-    message_text = "Hello! This is a test email sent from the Gmail API."
-    send_email(to, subject, message_text)

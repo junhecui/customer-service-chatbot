@@ -6,65 +6,41 @@ from datetime import datetime, timedelta
 
 llm = OpenAI()
 
-# Define event information prompt template
 event_information_prompt = PromptTemplate(
     input_variables=["query", "today_date"],
     template="""
 Today's date is {today_date}.
-Extract the event details from the following user input:
+You are scheduling an event based on the following user input:
 User input: "{query}"
 
-Please provide:
-- Event Name (summary)
-- Start Date and Time (start_time, in ISO format like 2024-10-25T10:00:00)
-- End Date and Time (end_time, in ISO format like 2024-10-25T10:00:00)
-List each item separately, separated by commas.
-Example: Meeting with Ted, 2024-10-25T10:00:00, 2024-10-25T11:00:00.
-If given a day of the week, calculate the date relative to today's date.
+Required details for event creation:
+1. **Event Name**: a brief, specific summary of the event (e.g., "Meeting with Ted" if the query is "Book meeting with Ted").
+2. **Start Date and Time**: the exact start date and time in ISO format (e.g., "2024-10-25T15:00:00").
+3. **End Date and Time**: the exact end date and time in ISO format, or if not provided, calculated based on a duration after the start time (e.g., "1 hour after start").
 
-If the input lacks complete details, respond with "missing information".
+**Instructions**:
+- **Only respond** with: "Create event: <Event Name>, <Start Date and Time in ISO format>, <End Date and Time in ISO format>" if and only if all three details are present and correctly formatted.
+- If **any required detail** is missing or unclear, such as the date, start time, or duration, respond with a specific request for the missing information. For example:
+  - If the start time is missing: "Please provide the event start time."
+  - If both the start and end times are missing: "Please provide the start time and either the end time or duration of the event."
+
+Generate only one of the two responses:
+- Either the exact "Create event" command with full details
+- Or a specific request for the missing information.
 """
 )
 
-# LLMChain for extracting event information
 event_information_chain = LLMChain(llm=llm, prompt=event_information_prompt)
 
 def create_event_task(query):
     today_date = datetime.now().strftime("%Y-%m-%d")
-    while True:
-        extracted_details = event_information_chain.predict(query=query, today_date=today_date).strip()
-        
-        if "missing information" in extracted_details.lower():
-            print("Chatbot: Could you specify the event name, start time, and end time?")
-            query = input("You: ")
-            continue
-        
-        details = extracted_details.split(',')
-        if len(details) < 3:
-            print("Chatbot: I couldn't understand all the details. Please provide event name, start time, and end time.")
-            query = input("You: ")
-            continue
+    response = event_information_chain.predict(query=query, today_date=today_date).strip()
 
-        summary, start_time_text, end_time_text = details[0].strip(), details[1].strip(), details[2].strip()
-        
-        # Parse start and end times with error handling for None
-        start_time_parsed = dateparser.parse(start_time_text, settings={'PREFER_DATES_FROM': 'future'})
-        end_time_parsed = dateparser.parse(end_time_text) if end_time_text else (start_time_parsed + timedelta(hours=1))
+    # Check if LLM has returned all required information to create the event
+    if response.startswith("Create event:"):
+        _, details = response.split("Create event:", 1)
+        summary, start_time, end_time = [detail.strip() for detail in details.split(",")]
 
-        if not start_time_parsed:
-            print("Chatbot: I couldn't understand the start time. Could you provide a clearer time?")
-            query = input("You: ")
-            continue
-        
-        # Format start and end times in ISO format
-        start_time = start_time_parsed.isoformat()
-        end_time = end_time_parsed.isoformat() if end_time_parsed else (start_time_parsed + timedelta(hours=1)).isoformat()
+        create_event(summary=summary, start_time=start_time, end_time=end_time)
 
-        # Try to create the event
-        try:
-            create_event(summary=summary, start_time=start_time, end_time=end_time)
-            print("Chatbot: Event created successfully!")
-            break
-        except Exception as e:
-            print(f"Chatbot: An error occurred while creating the event: {e}")
-            break
+    return response

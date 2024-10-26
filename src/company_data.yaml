@@ -1,0 +1,62 @@
+company_info:
+  name: "NoName Internet"
+  contact:
+    customer_support_email: "support@noname.com"
+    phone: "+1-123-456-7890"
+    website: "https://www.nonameisp.com"
+  hours_of_operation: 
+    weekdays: "8 AM - 8 PM"
+    weekends: "9 AM - 5 PM"
+
+plans:
+  - name: "Basic Plan"
+    speed: "25 Mbps"
+    suitable for: basic browsing and streaming in SD 
+    price: "$29.99/month"
+    features:
+      - "No data cap"
+      - "Free modem rental"
+  - name: "Pro Plan"
+    speed: "100 Mbps"
+    price: "$59.99/month"
+    suitable for: HD streaming, gaming, remote work
+    features:
+      - "No data cap"
+      - "24/7 priority support"
+      - "Free modem and router rental"
+  - name: "Premium Plan"
+    speed: "1 Gbps"
+    price: "$119.99/month"
+    suitable for: 4k streaming, multiple devices, multiplayer gaming
+    features:
+      - "No data cap"
+      - "24/7 priority support"
+      - "Free modem and router rental"
+      - "Free home Wi-Fi assessment"
+
+billing:
+  payment_methods:
+    - "Credit Card"
+    - "Debit Card"
+    - "Bank Transfer"
+    - "PayPal"
+  billing_cycles:
+    - "Monthly"
+    - "Quarterly"
+    - "Annually"
+  late_fee: "$15 after 5 days past due date"
+  contact_for_billing: "billing@noname.com"
+
+troubleshooting_steps:
+  no_internet:
+    - "Check if the modem and router are powered on."
+    - "Ensure all cables are securely connected."
+    - "Restart your modem and router by unplugging for 30 seconds."
+    - "Check for service outages in your area on our website."
+    - "If the issue persists, contact customer support."
+
+common_questions:
+  - question: "How do I upgrade my internet plan?"
+    answer: "To upgrade your plan, please visit your account page on our website or call customer support."
+  - question: "What should I do if I forget my account password?"
+    answer: "Click on 'Forgot Password' on the login page to reset your password. An email will be sent to your registered email address."
