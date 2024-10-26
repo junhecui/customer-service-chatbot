@@ -18,6 +18,7 @@ from tasks.send_email_task import send_email_task
 from tasks.list_events_task import list_events_with_count
 from tasks.answer_company_questions import retrieve_company_info
 from tasks.create_todo_task import create_todo_task
+from tasks.list_todo_task import list_todo_task
 
 agent = OpenAI()
 
@@ -63,6 +64,8 @@ while True:
         response = retrieve_company_info(query)
     elif category == "Add Task":
         response = create_todo_task(query)
+    elif category == "List Tasks":
+        response = list_todo_task(query)
     else:
         response = conversation.predict(input=query)
     print(f"Chatbot: {response}")

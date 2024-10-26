@@ -16,6 +16,7 @@ Classify the following user input into one of the following categories:
 - Reminders: when the user wants to be reminded of something.
 - Send Email: when the user wants to send a message or communicate with someone by sending an email to them.
 - Location Recommendations: when the user asks for recommendations for locations nearby such as restaurants or malls.
+- List Tasks: when the user wants to see their to-do list, or see their upcoming tasks.
 - Add Task: when the user wants to add a task to their to-do list.
 
 Examples:

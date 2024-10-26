@@ -33,14 +33,7 @@ def list_tasks():
     results = service.tasks().list(tasklist='@default').execute()
     tasks = results.get('items', [])
     
-    if not tasks:
-        print("No tasks found.")
-    else:
-        for task in tasks:
-            print(f"Task: {task['title']}")
-            if 'due' in task:
-                print(f"Due: {task['due']}")
-
+    return tasks
 def add_task(title, due=None, notes=None):
     service = get_tasks_service()
     task = {
@@ -51,3 +44,5 @@ def add_task(title, due=None, notes=None):
     
     result = service.tasks().insert(tasklist='@default', body=task).execute()
     print(f"Task '{title}' added with ID: {result['id']}")
+
+list_tasks()
