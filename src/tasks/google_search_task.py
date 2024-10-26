@@ -33,6 +33,5 @@ google_search_results_chain = LLMChain(llm=llm, prompt=google_search_results_pro
 def google_search_task(query):
     to_search = google_search_chain.predict(query=query)
     results = google_search(to_search)
-    print(results)
     response = google_search_results_chain.predict(query=query, results=results)
     return response

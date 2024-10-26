@@ -6,7 +6,7 @@ from datetime import datetime
 llm = OpenAI()
 
 todo_list_prompt = PromptTemplate(
-    input_variables=["query", "tasks" "today_date"],
+    input_variables=["query", "tasks", "today_date"],
     template="""
 Today's date is {today_date}.
 You are asked to list the tasks from a to-do list based on the following to-do list and user input.
